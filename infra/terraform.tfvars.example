@@ -1,0 +1,10 @@
+# Copy this file to terraform.tfvars and fill in your values
+
+project_id = "your-gcp-project-id"
+region     = "us-central1"
+
+# Leave empty for initial deployment, set after pushing image
+container_image = ""
+
+# Optional: Set for Secret Manager integration
+# openai_api_key = "sk-..."
