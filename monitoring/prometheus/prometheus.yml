@@ -32,11 +32,10 @@ scrape_configs:
     static_configs:
       - targets: ['cadvisor:8080']
 
-  # Nginx (via stub_status)
+  # Nginx (via nginx-prometheus-exporter)
   - job_name: 'nginx'
     static_configs:
-      - targets: ['nginx:80']
-    metrics_path: /stub_status
+      - targets: ['nginx_exporter:9113']
 
   # AI Processor health
   - job_name: 'ai_processor'

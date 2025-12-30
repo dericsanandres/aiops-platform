@@ -107,6 +107,16 @@ services:
     networks:
       - aiops
 
+  nginx_exporter:
+    image: nginx/nginx-prometheus-exporter:1.1
+    container_name: nginx_exporter
+    restart: unless-stopped
+    command: -nginx.scrape-uri=http://nginx:80/stub_status
+    networks:
+      - aiops
+    depends_on:
+      - nginx
+
   node_exporter:
     image: prom/node-exporter:v1.7.0
     container_name: node_exporter
@@ -129,8 +139,9 @@ services:
     image: gcr.io/cadvisor/cadvisor:v0.47.0
     container_name: cadvisor
     restart: unless-stopped
-    ports:
-      - "8080:8080"
+    # Port 8080 often conflicts - internal access only via Docker network
+    expose:
+      - "8080"
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:ro
