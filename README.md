@@ -7,22 +7,22 @@ AI-powered infrastructure monitoring and alert analysis platform. Demonstrates D
 ```mermaid
 flowchart TB
     subgraph Workloads["Sample Workloads"]
-        nginx["nginx\n:80"]
-        node_exp["node_exporter\n:9100"]
-        cadvisor["cAdvisor\n:8080"]
+        nginx[nginx :80]
+        node_exp[node_exporter :9100]
+        cadvisor[cAdvisor :8080]
     end
 
     subgraph Monitoring["Monitoring Stack"]
-        prometheus["Prometheus\n:9090"]
-        alertmanager["Alertmanager\n:9093"]
-        loki["Loki\n:3100"]
-        promtail["Promtail"]
-        grafana["Grafana\n:3000"]
+        prometheus[Prometheus :9090]
+        alertmanager[Alertmanager :9093]
+        loki[Loki :3100]
+        promtail[Promtail]
+        grafana[Grafana :3000]
     end
 
     subgraph AI["AI Layer"]
-        processor["AI Processor\n:8000"]
-        openai["OpenAI API"]
+        processor[AI Processor :8000]
+        openai[OpenAI API]
     end
 
     nginx --> prometheus
@@ -37,13 +37,6 @@ flowchart TB
     alertmanager -->|webhook| processor
     processor -->|analyze| openai
     openai -->|response| processor
-
-    style prometheus fill:#e6522c,color:#fff
-    style grafana fill:#f46800,color:#fff
-    style loki fill:#f46800,color:#fff
-    style alertmanager fill:#e6522c,color:#fff
-    style processor fill:#10a37f,color:#fff
-    style openai fill:#10a37f,color:#fff
 ```
 
 ### Data Flow
