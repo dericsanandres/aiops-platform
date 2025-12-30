@@ -1,5 +1,3 @@
-version: '3.8'
-
 networks:
   aiops:
     driver: bridge
@@ -53,7 +51,7 @@ services:
     container_name: grafana
     restart: unless-stopped
     ports:
-      - "3000:3000"
+      - "3001:3000"
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin123}
@@ -128,7 +126,7 @@ services:
       - aiops
 
   cadvisor:
-    image: gcr.io/cadvisor/cadvisor:v0.49.0
+    image: gcr.io/cadvisor/cadvisor:v0.47.0
     container_name: cadvisor
     restart: unless-stopped
     ports:
@@ -153,7 +151,7 @@ services:
     container_name: ai_processor
     restart: unless-stopped
     ports:
-      - "8000:8000"
+      - "8001:8000"
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - LOG_LEVEL=INFO
